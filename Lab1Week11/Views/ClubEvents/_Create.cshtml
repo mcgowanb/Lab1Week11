@@ -1,0 +1,47 @@
+﻿@model Lab1Week11.Models.ClubModel.ClubEvent
+
+
+@using (Html.BeginForm("_Create", "ClubEvents", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ClubId)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Venue)</th>
+                <th>@Html.DisplayNameFor(model => model.Location)</th>
+                <th>@Html.DisplayNameFor(model => model.StartDateTime)</th>
+                <th>@Html.DisplayNameFor(model => model.EndDateTime)</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Venue, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Venue, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.EndDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EndDateTime, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+}
